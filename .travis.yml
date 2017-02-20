@@ -15,7 +15,11 @@ before_script:
   - gulp
 
 script:
-  - xvfb-run testee qunit --browsers chrome,firefox
+  - xvfb-run testee test/qunit --browsers chrome,firefox
+  - selenium-standalone install
+  - selenium-standalone start &
+  - sleep 10
+  - gemini test test/gemini
 
 deploy:
   api_key:
